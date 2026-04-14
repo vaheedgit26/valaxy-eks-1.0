@@ -5,7 +5,7 @@
 #!/usr/bin/env bash
 set -e
 
-PROJECT_NAME=$1
+PROJECT=$1
 ENV=$2
 REGION=$3
 
@@ -14,7 +14,7 @@ REGION=$3
 cd ..
 
 terraform destroy \
-  -var="project_name=$PROJECT_NAME" \
+  -var="project=$PROJECT" \
   -var="env=$ENV" \
   -var="region=$REGION"
   # -auto-approve
