@@ -13,5 +13,5 @@ variable "common_tags" {
 
 ###################################  Default Variables   ########################################
 variable "sg_tags" {
-    default = {}
+  default = {}
 }
