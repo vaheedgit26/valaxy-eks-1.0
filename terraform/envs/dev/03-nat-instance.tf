@@ -1,12 +1,12 @@
 # NAT-INSTANCE Module Calling
 module "nat_instance" {
-  source = "git::https://github.com/vaheedgit26/Infra//modules/nat-instance"
+  source = "../../modules/nat-instance"
   # depends_on = [module.vpc]
 
   vpc_id                                  = module.vpc.vpc_id
   vpc_cidr                                = module.vpc.vpc_cidr
-  ami_id                                  = var.ami_id            #"ami-0ddfba243cbee3768" 
-  public_key_name                         = var.public_key_name   #"mumbai-1"
+  ami_id                                  = var.ami_id            # "ami-0ddfba243cbee3768" 
+  public_key_name                         = var.public_key_name   # "us-east-1"
   instance_type                           = "t3.micro"            # var.instance_type
 
   public_subnet_ID_to_launch_nat_instance = module.vpc.public_subnet_ids[0]
@@ -23,7 +23,7 @@ module "nat_instance" {
   # is_nat_instance = true
   is_eip_required = false
 
-  project_name = var.project_name
+  project      = var.project
   env          = var.env
   common_tags  = local.common_tags
 }
