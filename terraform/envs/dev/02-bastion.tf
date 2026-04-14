@@ -7,7 +7,7 @@ module "bastion_sg" {
   vpc_id         = module.vpc.vpc_id
   sg_name        = "bastion_sg"
   sg_description = "Bastion Instance Security Group"
-  common_tags = local.common_tags
+  common_tags    = local.common_tags
 }
 
 # Security Group Rule for Bastion Host
