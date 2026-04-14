@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc" {
     }
   )
 }
-# project
+
 
 # create internet gateway and attach it to vpc
 resource "aws_internet_gateway" "internet_gateway" {
