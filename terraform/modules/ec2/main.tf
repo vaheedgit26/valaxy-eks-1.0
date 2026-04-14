@@ -41,11 +41,29 @@ resource "aws_instance" "ec2_instance" {
     )
 }
 
-# Create and attach EIP (Elastic IP) for NAT INSTANCE
-resource "aws_eip" "nat_instance_eip" {
+# Allocate EIP
+resource "aws_eip" "nat" {
   count = ((var.is_nat_instance) && (var.is_eip_required)) ? 1 : 0
+  domain = "vpc"
 
-  domain   = "vpc"
-  instance = aws_instance.ec2_instance.id
-  network_interface = aws_instance.ec2_instance.primary_network_interface_id
+  tags = {
+    Name = "nat-eip"
+  }
 }
+
+# Associate EIP to Instance
+resource "aws_eip_association" "nat" {
+  count = ((var.is_nat_instance) && (var.is_eip_required)) ? 1 : 0
+  instance_id   = aws_instance.nat.id
+  allocation_id = aws_eip.nat.id
+}
+#########################################################################################################
+# Create and attach EIP (Elastic IP) for NAT INSTANCE
+#resource "aws_eip" "nat_instance_eip" {
+#  count = ((var.is_nat_instance) && (var.is_eip_required)) ? 1 : 0
+
+#  domain   = "vpc"
+#  instance = aws_instance.ec2_instance.id
+#  # network_interface = aws_instance.ec2_instance.primary_network_interface_id
+#}
+#########################################################################################################
