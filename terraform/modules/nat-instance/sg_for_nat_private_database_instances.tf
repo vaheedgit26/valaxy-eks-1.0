@@ -1,34 +1,40 @@
 # Security group for NAT Instance
 module "nat_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
-    project_name = var.project_name
-    env = var.env
-    vpc_id = var.vpc_id
-    sg_name = "nat_instance_sg"
+    # source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
+    source = "../sg"
+
+    project        = var.project
+    env            = var.env
+    vpc_id         = var.vpc_id
+    sg_name        = "nat_instance_sg"
     sg_description = "NAT Instance Security Group"
-    common_tags = var.common_tags
+    common_tags    = var.common_tags
 }
 
 # Security group for Private Subnet Instances
 module "private_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
-    project_name = var.project_name
-    env = var.env
-    vpc_id = var.vpc_id
-    sg_name = "private_instance_sg"
+    # source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
+    source = "../sg"
+
+    project        = var.project
+    env            = var.env
+    vpc_id         = var.vpc_id
+    sg_name        = "private_instance_sg"
     sg_description = "Private Instance Security Group"
-    common_tags = var.common_tags
+    common_tags    = var.common_tags
 }
 
 # Security group for Database Subnet Instances
 module "database_sg" {
-    source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
-    project_name = var.project_name
-    env = var.env
-    vpc_id = var.vpc_id
-    sg_name = "database_instance_sg"
+    # source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
+    source = "../sg"
+
+    project_name   = var.project_name
+    env            = var.env
+    vpc_id         = var.vpc_id
+    sg_name        = "database_instance_sg"
     sg_description = "Database Instance Security Group"
-    common_tags = var.common_tags
+    common_tags    = var.common_tags
 }
 
 # NAT Instance Security group rule to allow SSH from remote ip
