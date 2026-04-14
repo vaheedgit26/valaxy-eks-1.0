@@ -21,7 +21,7 @@ resource "aws_instance" "ec2_instance" {
 
     tags = {
       Name          = local.root_volume_final_name 
-      Project_Name  = var.project_name
+      Project       = var.project
       Environment   = var.env
     }
   }
