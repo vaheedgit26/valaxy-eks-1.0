@@ -13,7 +13,7 @@ module "ec2" {
   root_volume_size            = var.root_volume_size
   # user_data                 = file("${path.module}/nat_user_data.sh")
 
-  project_name                = var.project_name
+  project                     = var.project
   env                         = var.env
   common_tags                 = var.common_tags
 }
