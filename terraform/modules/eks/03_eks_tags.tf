@@ -13,7 +13,7 @@ resource "aws_ec2_tag" "eks_subnet_tag_public_cluster" {
   for_each    = toset(var.public_subnet_ids)
   resource_id = each.value
   key         = "kubernetes.io/cluster/${local.eks_cluster_name}"
-  value       = "shared"  # "owned"
+  value       = "owned"  # "shared"
 }
 
 # -------------------------------------------------------------------
@@ -31,5 +31,5 @@ resource "aws_ec2_tag" "eks_subnet_tag_private_cluster" {
   for_each    = toset(var.private_subnet_ids)
   resource_id = each.value
   key         = "kubernetes.io/cluster/${local.eks_cluster_name}"
-  value       = "shared"   # "owned"
+  value       = "owned"   # "shared"
 }
