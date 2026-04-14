@@ -1,24 +1,23 @@
-output "vpc_id" {
-  description = "ID of the VPC"
-  value       = aws_vpc.main.id
-}
+output "project_name" { value = var.project_name }
+output "env" { value = var.env }
 
-output "public_subnet_ids" {
-  description = "IDs of the public subnets"
-  value       = aws_subnet.public[*].id
-}
+output "vpc_id" { value = aws_vpc.vpc.id }
+output "vpc_cidr" { value = var.vpc_cidr }
+output "availability_zones" { value = local.azs }
 
-output "private_eks_subnet_ids" {
-  description = "IDs of the private EKS subnets"
-  value       = aws_subnet.private_eks[*].id
-}
+output "public_subnet_cidr" { value = var.public_subnet_cidr }
+output "private_subnet_cidr" { value = var.private_subnet_cidr }
+output "database_subnet_cidr" { value = var.database_subnet_cidr }
 
-output "private_rds_subnet_ids" {
-  description = "IDs of the private RDS subnets"
-  value       = aws_subnet.private_rds[*].id
-}
+output "public_subnet_ids" { value = aws_subnet.public[*].id  }
+output "private_subnet_ids" { value = aws_subnet.private.*.id }
+output "database_subnet_ids" { value = aws_subnet.database.*.id }
 
-output "nat_gateway_id" {
-  description = "ID of the NAT Gateway"
-  value       = aws_nat_gateway.main.id
+output "public_route_table_id" { value = aws_route_table.public.id }
+output "private_route_table_id" { value = aws_route_table.private.id }
+output "database_route_table_id" { value = aws_route_table.database.id }
+
+# This returns entire 'internet_gateway' object, if you want only 'id' then use "aws_internet_gateway.internet_gateway.id"
+output "internet_gateway" {
+  value = aws_internet_gateway.internet_gateway
 }
