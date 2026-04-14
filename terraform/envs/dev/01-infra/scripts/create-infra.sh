@@ -1,5 +1,5 @@
 ################################################
-# Usage: bash create-vpc.sh    #################
+# Usage: bash create-infra.sh    #################
 ################################################
 # This script takes 'bucket', 'env', region' and 'project' as inputs from previous '00-s3-create' calling module 
 
