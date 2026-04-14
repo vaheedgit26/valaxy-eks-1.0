@@ -17,8 +17,9 @@ module "eks" {
   node_subnet_ids     = module.vpc.private_subnet_ids
   node_instance_types = ["t3.small"]
   node_capacity_type  = "SPOT"
-  node_addl_sg_ids    = [module.vpc.bastion_host_sg_id]               # This is additional cluster SG and the default cluster SG is intact
   node_ssh_public_key = "us-east-1"
+  # node_addl_sg_ids    = [module.vpc.bastion_host_sg_id]               # This is additional cluster SG and the default cluster SG is intact
+  
 
   desired_capacity    = 2
   min_size            = 2
