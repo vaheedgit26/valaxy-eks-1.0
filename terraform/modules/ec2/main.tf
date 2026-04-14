@@ -54,7 +54,7 @@ resource "aws_eip" "nat" {
 # Associate EIP to Instance
 resource "aws_eip_association" "nat" {
   count = ((var.is_nat_instance) && (var.is_eip_required)) ? 1 : 0
-  instance_id   = aws_instance.nat.id
+  instance_id   = aws_instance.ec2_instance.id
   allocation_id = aws_eip.nat.id
 }
 #########################################################################################################
