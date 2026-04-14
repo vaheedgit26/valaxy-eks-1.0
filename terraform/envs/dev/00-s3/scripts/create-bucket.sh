@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #################################################################
-# Usage: source create-s3-bucket.sh <project_name> <env> <region>
+# Usage: source create-s3-bucket.sh <project> <env> <region>
 # Detects whether script is sourced or executed
 #################################################################
 set -e
@@ -8,7 +8,7 @@ set -e
 # Step 0: Go to repo root
 # cd "$(dirname "$0")"
 
-PROJECT_NAME=$1
+PROJECT=$1
 ENV=$2
 REGION=$3
 
@@ -25,7 +25,7 @@ abort() {
 }
 
 # Check required arguments
-if [[ -z "$PROJECT_NAME" || -z "$ENV" || -z "$REGION" ]]; then
+if [[ -z "$PROJECT" || -z "$ENV" || -z "$REGION" ]]; then
     abort "Usage: source create-s3-bucket.sh <project_name> <env> <region>"
 fi
 
@@ -48,7 +48,7 @@ echo "Step 3: Generating plan for creating S3 bucket"
 echo "================================================"
 terraform plan \
   -out=s3.tfplan \
-  -var="project_name=$PROJECT_NAME" \
+  -var="project=$PROJECT" \
   -var="env=$ENV" \
   -var="region=$REGION"
 
