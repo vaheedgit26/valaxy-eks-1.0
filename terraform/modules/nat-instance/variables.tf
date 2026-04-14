@@ -11,7 +11,8 @@ variable database_route_table_id { type = string }
 variable "project_name" {}
 variable "env" {}
 variable "common_tags" {
-    type = map
+  type = map
+  default = {}
 }
 ############### SG-MODULE related variables   ################################
 # variable "project_name" {}
