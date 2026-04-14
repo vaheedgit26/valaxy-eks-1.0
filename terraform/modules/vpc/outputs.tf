@@ -1,4 +1,4 @@
-output "project_name" { value = var.project_name }
+output "project" { value = var.project }
 output "env" { value = var.env }
 
 output "vpc_id" { value = aws_vpc.vpc.id }
