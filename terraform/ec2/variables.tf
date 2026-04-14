@@ -6,7 +6,7 @@ variable "public_key_name" {}
 variable "sg_ids" { type = list(string) }
 variable "subnet_id" {}
 
-variable "project_name" {}
+variable "project" {}
 variable "env" {}
 variable "common_tags" { type = map }
 
