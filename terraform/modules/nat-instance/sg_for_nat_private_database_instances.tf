@@ -29,7 +29,7 @@ module "database_sg" {
     # source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
     source = "../sg"
 
-    project_name   = var.project_name
+    project        = var.project
     env            = var.env
     vpc_id         = var.vpc_id
     sg_name        = "database_instance_sg"
