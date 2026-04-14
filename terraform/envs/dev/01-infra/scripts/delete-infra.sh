@@ -12,7 +12,7 @@ PROJECT=$(terraform -chdir=../../00-s3-create output -raw project)
 
 echo """
 📄 Details:
-     PROJECT : ${PROJECT_NAME}
+     PROJECT : ${PROJECT}
      ENV     : ${ENV}
      REGION  : ${REGION}
      BUCKET  : ${BUCKET}
