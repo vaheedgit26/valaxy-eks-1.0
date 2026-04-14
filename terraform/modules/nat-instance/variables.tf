@@ -8,14 +8,14 @@ variable private_route_table_id { type = string }
 variable database_route_table_id { type = string }
 # variable nat_primary_network_interface_id { type = string }
 ############### Common variables for all Modules ############################
-variable "project_name" {}
+variable "project" {}
 variable "env" {}
 variable "common_tags" {
   type = map
   default = {}
 }
 ############### SG-MODULE related variables   ################################
-# variable "project_name" {}
+# variable "project" {}
 # variable "env" {}
 # variable "common_tags" { type = map }
 # variable "vpc_id" {}  
@@ -25,9 +25,10 @@ variable "remote_ip_to_connect_nat_instance" {}
 variable "vpc_cidr" {}
 
 #############  EC2-MODULE related variables   #################################
-# variable "project_name" {}
+# variable "project" {}
 # variable "env" {}
 # variable "common_tags" { type = map }
+
 variable "ami_id" {}
 variable "public_key_name" {}
 variable "public_subnet_ID_to_launch_nat_instance" {}
