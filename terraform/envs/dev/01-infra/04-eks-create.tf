@@ -1,0 +1,25 @@
+module "eks" {
+  source = "../../../modules/eks"
+
+  project             = var.project  # "pharma"
+  env                 = var.env      # "dev"
+
+  public_subnet_ids   = module.vpc.public_subnet_ids      # For Tagging 
+  private_subnet_ids  = module.vpc.private_subnet_ids     # For Tagging 
+
+  cluster_version                  = "1.33"
+  cluster_subnet_ids               = module.vpc.private_subnet_ids    # (since vpc outputs as list, so [] not required)
+  cluster_endpoint_private_access  = true
+  cluster_endpoint_public_access   = false
+  cluster_addl_security_group_ids  = [module.vpc.bastion_host_sg_id]  # This is additional cluster SG and the default cluster SG is intact
+
+  node_subnet_ids     = module.vpc.private_subnet_ids
+  node_instance_types = ["t3.small"]
+  node_capacity_type  = "SPOT"
+  node_addl_sg_ids    = [module.vpc.bastion_host_sg_id]               # This is additional cluster SG and the default cluster SG is intact
+  node_ssh_public_key = "us-east-1"
+
+  desired_capacity    = 2
+  min_size            = 2
+  max_size            = 4
+}
