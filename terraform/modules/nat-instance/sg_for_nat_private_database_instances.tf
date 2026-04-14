@@ -58,7 +58,7 @@ resource "aws_security_group_rule" "vpc-inbound" {
 }
 
 # Private instances security group rule to allow all traffic from public subnets ( Public Subnets ---> Private Subnets ) 
-resource "aws_security_group_rule" "private-subnet-inbound" {
+resource "aws_security_group_rule" "public-subnet-to-private-subnet" {
   type              = "ingress"
   from_port         = 0
   to_port           = 0
@@ -68,7 +68,7 @@ resource "aws_security_group_rule" "private-subnet-inbound" {
 }
 
 # Database Instances security group rule to allow traffic from Private Subnets ( Private Subnets ---> Database Subnets )
-resource "aws_security_group_rule" "database-inbound" {
+resource "aws_security_group_rule" "private-subnet-to-database-subnet" {
   type              = "ingress"
   from_port         = 0
   to_port           = 0
