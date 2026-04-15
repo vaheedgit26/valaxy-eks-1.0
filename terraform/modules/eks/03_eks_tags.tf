@@ -13,8 +13,11 @@ resource "aws_ec2_tag" "eks_subnet_tag_public_elb" {
 }
 
 resource "aws_ec2_tag" "eks_subnet_tag_public_cluster" {
-  for_each    = toset(var.public_subnet_ids)
-  resource_id = each.value
+  # for_each    = toset(var.public_subnet_ids)
+  # resource_id = each.value
+
+  count       = length(var.public_subnet_ids)
+  resource_id = var.public_subnet_ids[count.index]
   key         = "kubernetes.io/cluster/${local.eks_cluster_name}"
   value       = "owned"  # "shared"
 }
@@ -24,15 +27,21 @@ resource "aws_ec2_tag" "eks_subnet_tag_public_cluster" {
 # -------------------------------------------------------------------
 
 resource "aws_ec2_tag" "eks_subnet_tag_private_elb" {
-  for_each    = toset(var.private_subnet_ids)
-  resource_id = each.value
+  # for_each    = toset(var.private_subnet_ids)
+  # resource_id = each.value
+
+  count       = length(var.public_subnet_ids)
+  resource_id = var.public_subnet_ids[count.index]
   key         = "kubernetes.io/role/internal-elb"
   value       = "1"
 }
 
 resource "aws_ec2_tag" "eks_subnet_tag_private_cluster" {
-  for_each    = toset(var.private_subnet_ids)
-  resource_id = each.value
+  # for_each    = toset(var.private_subnet_ids)
+  # resource_id = each.value
+
+  count       = length(var.public_subnet_ids)
+  resource_id = var.public_subnet_ids[count.index]
   key         = "kubernetes.io/cluster/${local.eks_cluster_name}"
   value       = "owned"   # "shared"
 }
