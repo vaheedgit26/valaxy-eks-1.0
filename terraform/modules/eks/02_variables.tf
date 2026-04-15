@@ -37,7 +37,7 @@ variable "node_disk_size" {
 }
 
 # variable "node_addl_sg_ids" { type = list(string) }
-variable "node_ssh_public_key" { type = string }
+# variable "node_ssh_public_key" { type = string }
 
 variable "desired_capacity" { type = number }
 variable "min_size" { type = number }
