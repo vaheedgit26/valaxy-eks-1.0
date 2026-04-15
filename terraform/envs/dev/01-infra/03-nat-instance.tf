@@ -1,6 +1,6 @@
 # NAT-INSTANCE Module Calling
 module "nat_instance" {
-  source = "../../modules/nat-instance"
+  source = "../../../modules/nat-instance"
   # depends_on = [module.vpc]
 
   vpc_id                                  = module.vpc.vpc_id
