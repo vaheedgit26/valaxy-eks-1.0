@@ -44,10 +44,10 @@ echo " Step 3: Generating Terraform plan "
 echo "==================================="
 # terraform plan
 terraform plan \
-  #-out=eks.tfplan \
   -var="project=$PROJECT" \
   -var="env=$ENV" \
   -var="region=$REGION" 
+  #-out=eks.tfplan \
   
 echo "================================="
 echo " Step 4: Applying Terraform plan "
