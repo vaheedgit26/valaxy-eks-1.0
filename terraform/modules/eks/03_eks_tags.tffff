@@ -3,8 +3,11 @@
 # -------------------------------------------------------------------
 
 resource "aws_ec2_tag" "eks_subnet_tag_public_elb" {
-  for_each    = toset(var.public_subnet_ids)
-  resource_id = each.value
+  # for_each    = toset(var.public_subnet_ids)
+  # resource_id = each.value
+
+  count       = length(var.public_subnet_ids)
+  resource_id = var.public_subnet_ids[count.index]
   key         = "kubernetes.io/role/elb"
   value       = "1"
 }
