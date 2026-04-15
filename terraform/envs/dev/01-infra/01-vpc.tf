@@ -1,6 +1,6 @@
 # VPC-MODULE Calling
 module "vpc" {
-  source = "../../modules/vpc"
+  source = "../../../modules/vpc"
 
   # All the counts should be same 
   azs_count             = 2
