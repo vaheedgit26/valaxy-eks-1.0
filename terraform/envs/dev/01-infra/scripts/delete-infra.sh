@@ -5,10 +5,10 @@
 #!/usr/bin/env bash
 set -e
 
-BUCKET=$(terraform -chdir=../../00-s3-create output -raw bucket_id)              
-ENV=$(terraform -chdir=../../00-s3-create output -raw env)                       
-REGION=$(terraform -chdir=../../00-s3-create output -raw region)                 
-PROJECT=$(terraform -chdir=../../00-s3-create output -raw project)
+BUCKET=$(terraform -chdir=../../00-s3 output -raw bucket_id)              
+ENV=$(terraform -chdir=../../00-s3 output -raw env)                       
+REGION=$(terraform -chdir=../../00-s3 output -raw region)                 
+PROJECT=$(terraform -chdir=../../00-s3 output -raw project)
 
 echo """
 📄 Details:
