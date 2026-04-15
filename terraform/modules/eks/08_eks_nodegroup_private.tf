@@ -25,7 +25,7 @@ resource "aws_eks_node_group" "main" {
   }
 
   # Force node group update when EKS AMI version changes
-  force_update_version = true
+  # force_update_version = true
 
   # Apply labels to each EC2 instance for easier scheduling and management in Kubernetes
   labels = {
