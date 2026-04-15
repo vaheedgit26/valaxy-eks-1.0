@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "bastion_internet" {
 
 # Bastion Host
 module "bastion_ec2" {
-  source = "../../modules/ec2"
+  source = "../../../modules/ec2"
 
   ami_id                      = var.ami_id
   instance_type               = "t3.micro"                        # var.instance_type
