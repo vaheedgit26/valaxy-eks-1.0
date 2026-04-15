@@ -1,6 +1,6 @@
-output "project_name" {
+output "project" {
   description = "Project Name"
-  value       = var.project_name
+  value       = var.project
 }
 
 output "env" {
