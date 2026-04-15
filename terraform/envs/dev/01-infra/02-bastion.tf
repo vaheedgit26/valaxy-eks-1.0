@@ -1,6 +1,6 @@
 # Security Group for Bastion Host
 module "bastion_sg" {
-  source = "../../modules/sg"
+  source = "../../../modules/sg"
 
   project        = var.project
   env            = var.env
