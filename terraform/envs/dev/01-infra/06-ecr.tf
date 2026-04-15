@@ -8,6 +8,6 @@ module "ecr" {
     "auth-service",
     "pharma-ui",
     "notification-service",
-    "drug-catalog-service"
+    "catalog-service"
   ]
 }
