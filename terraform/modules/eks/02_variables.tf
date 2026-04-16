@@ -6,6 +6,8 @@ variable env { type = string }
 
 #############################################             Cluster Variables            #################################################
 
+variable "cluster_name" { type = string }
+
 variable cluster_version { type = string }
 
 variable cluster_subnet_ids { type = list(string) }
