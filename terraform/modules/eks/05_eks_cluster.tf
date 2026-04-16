@@ -3,7 +3,7 @@
 # -------------------------------------------------------------------------------
 resource "aws_eks_cluster" "main" {
 
-  name     = "${var.eks_cluster_name}"
+  name     = "${cluster_name}"
   version  = var.cluster_version
   role_arn = aws_iam_role.eks_cluster.arn
 
