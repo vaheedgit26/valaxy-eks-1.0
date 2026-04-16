@@ -44,8 +44,8 @@ resource "aws_subnet" "public" {
     },
 
     var.eks_cluster_name != null ? {
-      "kubernetes.io/role/elb"                           = "1"
-      "kubernetes.io/cluster/${var.eks_cluster_name}"    = "owned"
+      "kubernetes.io/role/elb"                           = "1"          # For external facing ALB
+      "kubernetes.io/cluster/${var.eks_cluster_name}"    = "owned"      # "shared"
     } : {}
     
   )
