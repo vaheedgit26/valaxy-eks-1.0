@@ -13,6 +13,8 @@ module "vpc" {
   private_subnet_cidr  = ["10.100.11.0/24", "10.100.12.0/24"]
   database_subnet_cidr = ["10.100.31.0/24", "10.100.32.0/24"]
 
+  eks_cluster_name = local.eks_cluster_name
+
   project      = var.project
   env          = var.env
   common_tags  = local.common_tags
