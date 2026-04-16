@@ -46,8 +46,8 @@ variable "min_size" { type = number }
 variable "max_size" { type = number }
 
 ############################################     Variables for Tagging subnets for ELB    #######################################################################
-variable "public_subnet_ids" { type = list(string) }
-variable "private_subnet_ids" { type = list(string) }
+# variable "public_subnet_ids" { type = list(string) }
+# variable "private_subnet_ids" { type = list(string) }
 
   
 
