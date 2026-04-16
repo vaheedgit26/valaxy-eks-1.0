@@ -36,7 +36,8 @@ resource "aws_subnet" "public" {
   cidr_block              = var.public_subnet_cidr[count.index]
   availability_zone       = local.azs[count.index]
   map_public_ip_on_launch = var.map_public_ip_on_launch
-  
+
+
   tags = merge(
     var.common_tags,
     {
@@ -62,6 +63,7 @@ resource "aws_subnet" "private" {
   cidr_block              = var.private_subnet_cidr[count.index]
   availability_zone       = local.azs[count.index]
   map_public_ip_on_launch = false
+
 
   tags = merge(
     var.common_tags,
