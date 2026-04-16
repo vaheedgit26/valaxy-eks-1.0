@@ -5,9 +5,23 @@
 #!/usr/bin/env bash
 set -e
 
-PROJECT=$1
-ENV=$2
-REGION=$3
+BUCKET=$(terraform -chdir=../../00-s3 output -raw bucket_id)              
+ENV=$(terraform -chdir=../../00-s3 output -raw env)                       
+REGION=$(terraform -chdir=../../00-s3 output -raw region)                 
+PROJECT=$(terraform -chdir=../../00-s3 output -raw project)
+
+echo """
+📄 Details:
+     PROJECT : ${PROJECT}
+     ENV     : ${ENV}
+     REGION  : ${REGION}
+     BUCKET  : ${BUCKET}
+"""
+sleep 5
+
+# PROJECT=$1
+# ENV=$2
+# REGION=$3
 
 # terraform init
 
