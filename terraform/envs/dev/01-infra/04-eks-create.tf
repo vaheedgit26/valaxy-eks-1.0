@@ -12,7 +12,7 @@ module "eks" {
   cluster_version                  = "1.33"
   cluster_subnet_ids               = module.vpc.private_subnet_ids    # (since vpc outputs as list, so [] not required)
   cluster_endpoint_private_access  = true
-  cluster_endpoint_public_access   = false
+  cluster_endpoint_public_access   = true
   # cluster_addl_security_group_ids  = [module.vpc.bastion_host_sg_id]  # This is additional cluster SG and the default cluster SG is intact
 
   node_subnet_ids     = module.vpc.private_subnet_ids
