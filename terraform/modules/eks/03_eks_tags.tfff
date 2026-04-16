@@ -1,3 +1,4 @@
+# Not working properly due to "for_each"
 # -------------------------------------------------------------------
 # Public Subnet Tags for EKS Load Balancer Support
 # -------------------------------------------------------------------
