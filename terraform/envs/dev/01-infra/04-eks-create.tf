@@ -5,8 +5,8 @@ module "eks" {
   project             = var.project  # "pharma"
   env                 = var.env      # "dev"
 
-  public_subnet_ids   = module.vpc.public_subnet_ids      # For Tagging 
-  private_subnet_ids  = module.vpc.private_subnet_ids     # For Tagging 
+  # public_subnet_ids   = module.vpc.public_subnet_ids      # For Tagging 
+  # private_subnet_ids  = module.vpc.private_subnet_ids     # For Tagging 
 
   cluster_name                     = local.eks_cluster_name
   cluster_version                  = "1.33"
