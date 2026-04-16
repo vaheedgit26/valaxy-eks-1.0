@@ -1,16 +1,16 @@
-variable project { type = string }
+variable project    { type = string }
 
-variable env { type = string }
+variable env        { type = string }
 
 # variable "region" { type = string }
 
 #############################################             Cluster Variables            #################################################
 
-variable "cluster_name" { type = string }
+variable "cluster_name"                  { type = string }
 
-variable cluster_version { type = string }
+variable cluster_version                 { type = string }
 
-variable cluster_subnet_ids { type = list(string) }
+variable cluster_subnet_ids              { type = list(string) }
 
 variable cluster_endpoint_private_access { type = bool }
 
@@ -21,11 +21,11 @@ variable cluster_endpoint_public_access { type = bool }
 
 #############################################             Node Group Variables           #################################################
 
-variable node_subnet_ids { type = list(string) }
+variable node_subnet_ids     { type = list(string) }
 
 variable node_instance_types { type = list(string) }
 
-variable node_capacity_type { type = string }  # ON_DEMAND/ SPOT
+variable node_capacity_type  { type = string }  # ON_DEMAND/ SPOT
 
 variable "node_disk_size" {
   type        = number
@@ -38,15 +38,15 @@ variable "node_disk_size" {
   }
 }
 
-# variable "node_addl_sg_ids" { type = list(string) }
+# variable "node_addl_sg_ids"    { type = list(string) }
 # variable "node_ssh_public_key" { type = string }
 
 variable "desired_capacity" { type = number }
-variable "min_size" { type = number }
-variable "max_size" { type = number }
+variable "min_size"         { type = number }
+variable "max_size"         { type = number }
 
 ############################################     Variables for Tagging subnets for ELB    #######################################################################
-# variable "public_subnet_ids" { type = list(string) }
+# variable "public_subnet_ids"  { type = list(string) }
 # variable "private_subnet_ids" { type = list(string) }
 
   
