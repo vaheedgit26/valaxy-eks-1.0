@@ -40,7 +40,7 @@ resource "aws_eks_node_group" "main" {
   ]
 
   tags = {
-    Name      = "${local.eks_cluster_name}-node-group"
+    Name      = "${var.cluster_name}-node-group"
     Project   = var.project
     Env       = var.env
     Terraform = true
