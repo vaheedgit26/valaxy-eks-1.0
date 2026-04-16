@@ -23,7 +23,7 @@ sysctl --system
 IFACE=$(ip route | awk '/default/ {print $5}')
 
 # Replace with your VPC CIDR (VERY IMPORTANT)
-VPC_CIDR="10.0.0.0/16"
+VPC_CIDR="10.100.0.0/16"
 
 echo "Using interface: $IFACE"
 echo "Using VPC CIDR: $VPC_CIDR"
