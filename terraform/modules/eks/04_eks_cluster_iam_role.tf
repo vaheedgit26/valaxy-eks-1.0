@@ -20,7 +20,7 @@ resource "aws_iam_role" "eks_cluster" {
   })
 
   tags = {
-    Name      = "${local.eks_cluster_name}-role"
+    Name      = "${var.cluster_name}-role"
     Project   = var.project
     Env       = var.env
     Terraform = true
