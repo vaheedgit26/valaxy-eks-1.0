@@ -3,7 +3,7 @@ variable "vpc_cidr" {}
 variable "project" {}
 variable "env" {}
 
-variable "eks_cluster_name" { default = null }   # For EKS public and private ELBs 
+variable "eks_cluster_name" { default = null }   # For EKS public and private tags for ELBs 
 
 variable "vpc_count" {
   type = number
