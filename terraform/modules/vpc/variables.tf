@@ -3,6 +3,8 @@ variable "vpc_cidr" {}
 variable "project" {}
 variable "env" {}
 
+variable "eks_cluster_name" {}
+
 variable "vpc_count" {
   type = number
   default = 1
