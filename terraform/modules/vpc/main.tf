@@ -41,10 +41,15 @@ resource "aws_subnet" "public" {
     var.common_tags,
     {
       Name = "${local.resource_name}-public-subnet-${local.azs[count.index]}"
-      "kubernetes.io/role/elb"                        = 1    # For internet facing ALB
-      "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"  # "shared"
-    }
+    },
+
+    var.eks_cluster_name != null ? {
+      "kubernetes.io/role/internal-elb"                  = "1"
+      "kubernetes.io/cluster/${var.eks_cluster_name}"    = "owned"
+    } : {}
+    
   )
+
   depends_on = [aws_vpc.vpc]
 }
 
@@ -62,9 +67,12 @@ resource "aws_subnet" "private" {
     var.common_tags,
     {
       Name = "${local.resource_name}-private-subnet-${local.azs[count.index]}"
-      "kubernetes.io/role/internal-elb"           = "1" # For internal facing ALB
+    },
+
+    var.eks_cluster_name != null ? {
+      "kubernetes.io/role/internal-elb"               = "1"       # For internal facing ALB
       "kubernetes.io/cluster/${var.eks_cluster_name}" = "owned"   # "shared"
-    }
+    } : {}
   )
   depends_on = [aws_vpc.vpc]
 }
