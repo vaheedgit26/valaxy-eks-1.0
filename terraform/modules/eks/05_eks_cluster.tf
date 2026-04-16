@@ -28,7 +28,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Name      = "${local.eks_cluster_name}"
+    Name      = "${var.cluster_name}"
     Env       = var.env
     Project   = var.project
     Terraform = true
