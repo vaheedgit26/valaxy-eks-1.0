@@ -21,7 +21,7 @@ module "nat_instance" {
   remote_ip_to_connect_nat_instance       = "0.0.0.0/0"      # For nat-instance sg  # "${var.remote_ip_to_connect_nat_instance}/32"
 
   # is_nat_instance = true
-  is_eip_required = false # true
+  is_eip_required = true
 
   project      = var.project
   env          = var.env
