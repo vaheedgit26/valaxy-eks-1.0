@@ -37,10 +37,11 @@ variable "node_disk_size" {
     error_message = "Disk size must be between 8GB and 25GB."
   }
 }
+# variable "node_ssh_public_key" { type = string }
 
 variable "enable_bastion_access" { default = null }
-variable "bastion_sg_id"    { default = null }
-# variable "node_ssh_public_key" { type = string }
+variable "bastion_sg_id"         {}
+
 
 variable "desired_capacity" { type = number }
 variable "min_size"         { type = number }
