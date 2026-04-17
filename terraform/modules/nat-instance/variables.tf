@@ -12,15 +12,15 @@ variable "is_nat_instance" { default = true }
 variable "is_eip_required" { default = false }
 
 # For nat user data VPC_CIDR purpose
-variable "vpc_cidr" {
-  type    = string
-  default = null
+#variable "vpc_cidr" {
+#  type    = string
+#  default = null
 
-  validation {
-    condition     = !(var.is_nat_instance == true && var.vpc_cidr == null)    
-    error_message = "vpc_cidr must be provided when is_nat_instance is true"
-  }
-}
+#  validation {
+#    condition     = !(var.is_nat_instance == true && var.vpc_cidr == null)    
+#    error_message = "vpc_cidr must be provided when is_nat_instance is true"
+#  }
+#}
 ############### Common variables for all Modules ############################
 variable "project" {}
 variable "env" {}
