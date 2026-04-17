@@ -17,7 +17,7 @@ variable "vpc_cidr" {
   default = null
 
   validation {
-    condition     = !(var.is_nat_instance == true && var.vpc_cidr == null)    # var.vpc_cidr != null || var.is_nat_instance == false
+    condition     = !(var.is_nat_instance == true && var.vpc_cidr == null)    
     error_message = "vpc_cidr must be provided when is_nat_instance is true"
   }
 }
