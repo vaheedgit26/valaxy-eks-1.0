@@ -38,6 +38,7 @@ variable "node_disk_size" {
   }
 }
 
+variable "enable_bastion_access" { default = null }
 variable "bastion_sg_id"    { default = null }
 # variable "node_ssh_public_key" { type = string }
 
