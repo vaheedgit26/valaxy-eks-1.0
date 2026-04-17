@@ -13,6 +13,8 @@ module "ec2" {
   root_volume_size            = var.root_volume_size
   # user_data                 = file("${path.module}/nat_user_data.sh")
 
+  vpc_cidr                    = var.vpc_cidr     # For NAT user data VPC_CIDR purpose
+
   project                     = var.project
   env                         = var.env
   common_tags                 = var.common_tags
