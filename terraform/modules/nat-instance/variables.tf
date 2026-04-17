@@ -11,13 +11,13 @@ variable database_route_table_id { type = string }
 variable "is_nat_instance" { default = true }
 variable "is_eip_required" { default = false }
 
-# For nat user data purpose
+# For nat user data VPC_CIDR purpose
 variable "vpc_cidr" {
   type    = string
   default = null
 
   validation {
-    condition     = var.vpc_cidr != null || var.is_nat_instance == true
+    condition     = !(var.is_nat_instance == true && var.vpc_cidr == null)    # var.vpc_cidr != null || var.is_nat_instance == false
     error_message = "vpc_cidr must be provided when is_nat_instance is true"
   }
 }
