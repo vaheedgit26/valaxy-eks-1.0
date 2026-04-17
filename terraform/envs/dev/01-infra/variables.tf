@@ -6,12 +6,6 @@ variable "env" {}
 #############################################################################################################
 variable "ami_id" {}
 # variable "public_key_name" {}
-
-variable "cluster_endpoint_public_access" {}
-variable "cluster_endpoint_private_access" {}
-
-variable "bastion_sg_id" { default = null }
-variable "enable_bastion_access" {}
 #############################################################################################################
 
 variable "db_password" {
