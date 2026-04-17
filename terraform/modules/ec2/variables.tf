@@ -39,15 +39,3 @@ variable "root_volume_size" {
 #}
 
 variable "instance_type" {}
-
-# For nat user data purpose
-variable "vpc_cidr" {
-  type    = string
-  default = null
-
-  validation {
-    condition     = var.vpc_cidr != null || var.is_nat_instance == false
-    error_message = "vpc_cidr must be provided when is_nat_instance is true"
-  }
-}
-}
