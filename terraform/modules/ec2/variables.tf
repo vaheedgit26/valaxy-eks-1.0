@@ -24,6 +24,7 @@ variable "is_nat_instance" {
   type = bool
   default = false 
 }
+
 variable "vpc_cidr" {
   type = string
   default = null
