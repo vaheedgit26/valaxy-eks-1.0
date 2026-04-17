@@ -36,6 +36,7 @@ iptables -X
 
 # NAT: Masquerade private subnet traffic to internet
 iptables -t nat -A POSTROUTING -s $VPC_CIDR -o $IFACE -j MASQUERADE
+# iptables -t nat -A POSTROUTING  -o $IFACE -j MASQUERADE
 
 # Allow outbound traffic from private subnets
 iptables -A FORWARD -s $VPC_CIDR -o $IFACE -j ACCEPT
