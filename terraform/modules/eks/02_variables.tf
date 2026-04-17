@@ -40,7 +40,7 @@ variable "node_disk_size" {
 # variable "node_ssh_public_key" { type = string }
 
 variable "enable_bastion_access" { default = null }
-variable "bastion_sg_id"         {}
+variable "bastion_sg_id"         { default = null }
 
 
 variable "desired_capacity" { type = number }
