@@ -5,8 +5,8 @@ echo "==== NAT INSTANCE SETUP START ===="
 
 dnf install -y iptables-services
 
-systemctl enable iptables
-systemctl start iptables
+systemctl enable iptables.service
+systemctl restart iptables.service
 
 cat <<EOF > /etc/sysctl.d/99-nat.conf
 net.ipv4.ip_forward = 1
@@ -16,7 +16,7 @@ EOF
 
 sysctl --system
 
-IFACE=$(ip route | awk '/default/ {print $5}')
+IFACE=$(ip -o -4 route show to default | awk '{print $5}')
 
 VPC_CIDR="${vpc_cidr}"
 
@@ -28,10 +28,13 @@ iptables -t nat -F
 iptables -t mangle -F
 iptables -X
 
+echo "Applying NAT rule for $VPC_CIDR via $IFACE"
+
 iptables -t nat -A POSTROUTING -s $VPC_CIDR -o $IFACE -j MASQUERADE
+
 iptables -A FORWARD -s $VPC_CIDR -o $IFACE -j ACCEPT
 iptables -A FORWARD -d $VPC_CIDR -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
-iptables-save > /etc/sysconfig/iptables
+service iptables save || iptables-save > /etc/sysconfig/iptables
 
 echo "==== NAT INSTANCE SETUP COMPLETE ===="
