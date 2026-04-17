@@ -8,6 +8,8 @@ resource "aws_instance" "ec2_instance" {
   iam_instance_profile        = var.iam_instance_profile
 
   user_data                   = var.is_nat_instance ? file("${path.module}/nat_user_data.sh") : var.user_data
+
+  # user_data = var.is_nat_instance ? templatefile("${path.module}/nat_user_data.sh.tpl", { vpc_cidr = var.vpc_cidr }) : var.user_data
   
   # If 'source_dest_check = false' --> NAT Instance 
   # If 'source_dest_check = true'  --> Normal Instance
