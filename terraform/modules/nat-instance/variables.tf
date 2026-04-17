@@ -7,6 +7,20 @@ variable "private_subnet_cidr" { type = list }
 variable private_route_table_id { type = string }
 variable database_route_table_id { type = string }
 # variable nat_primary_network_interface_id { type = string }
+
+variable "is_nat_instance" { default = true }
+variable "is_eip_required" { default = false }
+
+# For nat user data purpose
+variable "vpc_cidr" {
+  type    = string
+  default = null
+
+  validation {
+    condition     = var.vpc_cidr != null || var.is_nat_instance == true
+    error_message = "vpc_cidr must be provided when is_nat_instance is true"
+  }
+}
 ############### Common variables for all Modules ############################
 variable "project" {}
 variable "env" {}
@@ -35,5 +49,4 @@ variable "public_subnet_ID_to_launch_nat_instance" {}
 
 variable "root_volume_size" {}
 variable "instance_type" {}
-variable "is_nat_instance" { default = true }
-variable "is_eip_required" { default = false }
+
