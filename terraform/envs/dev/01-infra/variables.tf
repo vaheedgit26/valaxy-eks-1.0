@@ -5,8 +5,11 @@ variable "env" {}
 
 #############################################################################################################
 variable "ami_id" {}
-variable "public_key_name" {}
+# variable "public_key_name" {}
 variable "bastion_sg_id" { default = null }
+
+variable "cluster_endpoint_private_access" {}
+variable "cluster_endpoint_public_access" {}
 #############################################################################################################
 
 variable "db_password" {
