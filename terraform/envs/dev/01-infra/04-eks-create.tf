@@ -13,12 +13,15 @@ module "eks" {
   cluster_subnet_ids               = module.vpc.private_subnet_ids    # (since vpc outputs as list, so [] not required)
   cluster_endpoint_public_access   = false                            # Control plane public access
   cluster_endpoint_private_access  = true                             # Control plane to Node and vice versa communication
-  bastion_sg_id                    = local.bastion_sg_id
   # cluster_addl_security_group_ids  = [module.vpc.bastion_host_sg_id]  # This is additional cluster SG and the default cluster SG is intact
 
   node_subnet_ids     = module.vpc.private_subnet_ids
   node_instance_types = ["t3.small"]
   node_capacity_type  = "SPOT"
+
+  # Cluster access from Bastion
+  enable_bastion_access = true
+  bastion_sg_id         = module.bastion_sg.sg_id
 
   # node_ssh_public_key = "us-east-1"
   # node_addl_sg_ids    = [module.bastion_sg.sg_id]               # SSH to Node instance, This is additional cluster SG and the default cluster SG is intact
