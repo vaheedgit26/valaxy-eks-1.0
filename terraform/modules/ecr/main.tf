@@ -8,6 +8,8 @@ resource "aws_ecr_repository" "main" {
     scan_on_push = true
   }
 
+  force_delete = true
+
   tags = {
     Name    = "${var.project}-${var.env}-${each.value}"
     Env     = var.env
